@@ -1,0 +1,30 @@
+<% layout('layouts/team_boilerplate') %>
+<div class="row">
+  <div class="col-8 offset-2 alert alert-warning">
+    <%const date = bug.statuslastmodified;%>
+    <h2 class="text-uppercase"><%= bug.title%></h2>
+    <p><%=bug.description%></p>
+    <p>
+      status: <%=bug.status%> on
+      <%=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()},
+      ${date.getHours()}:${date.getMinutes()+1}:${date.getSeconds()+1}`%>
+    </p>
+
+    <form
+      novalidate
+      class="validated-form"
+      action="/team/bug/<%=bug._id%>?_method=PUT"
+      method="post"
+    >
+      <hr />
+      <label for="status">change status : </label>
+      <select class="btn btn-primary mb-3" name="status" id="status">
+        <option value="open">open</option>
+        <option value="fixed">fixed</option>
+        <option value="rejected">rejected</option>
+      </select>
+      <br />
+      <button class="btn btn-warning">save changes</button>
+    </form>
+  </div>
+</div>

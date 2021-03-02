@@ -1,0 +1,57 @@
+<% layout('layouts/admin_boilerplate') %> <% let date = bug.reportedon; let
+lastmodified= bug.statuslastmodified;%>
+<div class="row">
+  <div class="col-8 offset-2">
+    <div class="alert alert-warning">
+      <h2 class="text-uppercase"><%= bug.title%></h2>
+      <p class="text-muted">
+        Reported on
+        <%=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()},
+        ${date.getHours()}:${date.getMinutes()+1}:${date.getSeconds()+1}`%>
+      </p>
+      <hr />
+      <h4><%=bug.description%></h4>
+      <hr />
+
+      <%if(bug.assignedto){%>
+      <h5>Assigned to : <%=bug.assignedto.username%></h5>
+      <p class="text-muted">
+        <%=bug.status%> on
+        <%=`${lastmodified.getDate()}-${lastmodified.getMonth()+1}-${lastmodified.getFullYear()},
+        ${lastmodified.getHours()}:${lastmodified.getMinutes()+1}:${lastmodified.getSeconds()+1}`%>
+      </p>
+      <% }else{%>
+      <!-- prettier-ignore -->
+      <form novalidate class="validated-form" action="/admin/bug/<%=bug._id%>?_method=PUT" method="post">
+        <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check reject" value="reject" name="action" id="btnradio1" autocomplete="off" checked>
+          <label class="btn btn-outline-primary" for="btnradio1">Reject bug</label>
+
+          <input type="radio" class="btn-check assign" value="assign" name="action" id="btnradio2" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio2">Assign team</label>
+
+        </div>
+        <select  name="assignedto" class="btn btn-primary mb-3">
+          <%for(let team of teams){%>
+          <option value="<%=team._id%>"><%=team.username%></option>
+          <%}%>
+        </select>
+        <br>
+        <button class="btn btn-warning">save changes</button>
+      </form>
+      <%}%>
+    </div>
+  </div>
+</div>
+<script>
+  const select = document.querySelector("select");
+  select.classList.add("disabled");
+  const reject = document.querySelector(".reject");
+  const assign = document.querySelector(".assign");
+  reject.addEventListener("click", () => {
+    select.classList.add("disabled");
+  });
+  assign.addEventListener("click", () => {
+    select.classList.remove("disabled");
+  });
+</script>

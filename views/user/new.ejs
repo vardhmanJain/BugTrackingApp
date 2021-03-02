@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+  <div class="col-6 offset-3">
+    <h1 class="display-5">Welcome to BugPolice</h1>
+    <hr />
+    <form novalidate class="validated-form" action="/user" method="post">
+      <label class="form-label" for="email">email:</label>
+      <input
+        class="form-control mb-3"
+        required
+        type="text"
+        name="email"
+        placeholder="email"
+        id="email"
+      />
+      <label class="form-label" for="password">password:</label>
+      <input
+        class="form-control mb-3"
+        required
+        type="password"
+        name="password"
+        id="password"
+        placeholder="password"
+      />
+      <button class="btn btn-warning">Sign up</button>
+    </form>
+  </div>
+</div>

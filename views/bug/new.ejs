@@ -1,0 +1,29 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+  <div class="col-6 offset-3">
+    <h1 class="mb-3">Details</h1>
+    <form
+      novalidate
+      class="validated-form"
+      method="post"
+      action="/user/<%=userid%>/bug"
+    >
+      <label class="form-label" for="title">Title:</label>
+      <input
+        class="form-control mb-3"
+        id="title"
+        type="text"
+        name="title"
+        required
+      />
+      <label class="form-label" for="description">Description</label>
+      <textarea
+        class="form-control mb-3"
+        required
+        id="description"
+        name="description"
+      ></textarea>
+      <button class="btn btn-warning">Report Bug</button>
+    </form>
+  </div>
+</div>

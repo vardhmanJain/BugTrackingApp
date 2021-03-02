@@ -1,0 +1,25 @@
+<% layout('layouts/admin_boilerplate') %>
+<div class="row mt-3">
+  <div class="col-6 offset-3">
+    <h1 class="display-5">New Team</h1>
+    <form novalidate class="validated-form" action="/admin/team" method="post">
+      <label class="form-label" for="username">Username:</label>
+      <input
+        class="form-control mb-3"
+        required
+        type="text"
+        id="username"
+        name="username"
+      />
+      <label class="form-label" for="password">Password:</label>
+      <input
+        class="form-control mb-3"
+        required
+        type="password"
+        id="password"
+        name="password"
+      />
+      <button class="btn btn-warning">create team</button>
+    </form>
+  </div>
+</div>

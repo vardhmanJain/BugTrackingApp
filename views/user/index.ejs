@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+  <div class="col-8 offset-2">
+    <h1 class="display-4">Welcome <%=user.email%></h1>
+    <hr />
+    <h3 class="display-6 text-muted mb-3">Bugs Reported</h3>
+    <% for(let bug of user.bugsreported){%>
+    <div class="card mb-3" style="border-color: #457b9d">
+      <div class="card-body">
+        <% let date = bug.reportedon%>
+        <a class="stretched-link" href="/user/<%=user._id%>/bug/<%=bug._id%>"
+          ><h5 class="card-title"><%=bug.title%></h5></a
+        >
+        <div class="text-muted">
+          <%=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()},
+          ${date.getHours()}:${date.getMinutes()+1}:${date.getSeconds()+1}`%>
+        </div>
+      </div>
+    </div>
+    <%}%>
+    <hr />
+    <a class="btn btn-warning" href="/user/<%=user._id%>/bug/new"
+      >report a new bug</a
+    >
+  </div>
+</div>
+<!-- </body>
+        </html> -->

@@ -1,0 +1,31 @@
+<% layout('layouts/team_boilerplate') %>
+<div class="row">
+  <div class="col-6 offset-3">
+    <h1 class="display-5">Authority login</h1>
+    <hr />
+    <form novalidate class="validated-form" action="/authority" method="post">
+      <label class="form-label" for="username">username</label>
+      <input
+        class="form-control mb-3"
+        id="username"
+        type="text"
+        name="username"
+        required
+      />
+      <label class="form-label" for="password">password</label>
+      <input
+        class="form-control mb-3"
+        id="password"
+        type="password"
+        name="password"
+        required
+      />
+      <select required class="btn btn-primary mb-3" name="usertype">
+        <option>admin</option>
+        <option>team</option>
+      </select>
+      <br />
+      <button class="btn btn-warning">login</button>
+    </form>
+  </div>
+</div>

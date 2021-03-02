@@ -1,0 +1,59 @@
+<% layout('layouts/team_boilerplate') %>
+<h3 class="display-5">Welcome <%=team.username%></h3>
+<hr />
+<article class="row">
+  <div class="col-sm-4">
+    <h4 class="display-6 mb-3">assigned</h4>
+    <ul>
+      <% for(let bug of team.bugsassigned){ if(bug.status === "assigned"){ let
+      date = bug.statuslastmodified;%>
+      <li>
+        <a href="/team/<%=team._id%>/bug/<%=bug._id%>"
+          ><h5><%=bug.title%></h5></a
+        >
+        <h6>
+          assigned on :
+          <%=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()},
+          ${date.getHours()}:${date.getMinutes()+1}:${date.getSeconds()+1}`%>
+        </h6>
+      </li>
+      <%}}%>
+    </ul>
+  </div>
+  <div class="col-sm-4">
+    <h4 class="display-6 mb-3">open</h4>
+    <ul>
+      <% for(let bug of team.bugsassigned){ if(bug.status === "open"){ let date
+      = bug.statuslastmodified;%>
+      <li>
+        <a href="/team/<%=team._id%>/bug/<%=bug._id%>"
+          ><h5><%=bug.title%></h5></a
+        >
+        <h6>
+          open on :
+          <%=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()},
+          ${date.getHours()}:${date.getMinutes()+1}:${date.getSeconds()+1}`%>
+        </h6>
+      </li>
+      <%}}%>
+    </ul>
+  </div>
+  <div class="col-sm-4">
+    <h4 class="display-6 mb-3">fixed</h4>
+    <ul>
+      <% for(let bug of team.bugsassigned){ if(bug.status === "fixed"){ let date
+      = bug.statuslastmodified;%>
+      <li>
+        <a href="/team/<%=team._id%>/bug/<%=bug._id%>"
+          ><h5><%=bug.title%></h5></a
+        >
+        <h6>
+          fixed on :
+          <%=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()},
+          ${date.getHours()}:${date.getMinutes()+1}:${date.getSeconds()+1}`%>
+        </h6>
+      </li>
+      <%}}%>
+    </ul>
+  </div>
+</article>

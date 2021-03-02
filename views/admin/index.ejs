@@ -1,0 +1,71 @@
+<% layout('layouts/admin_boilerplate') %>
+<h1 class="display-4">Welcome Admin</h1>
+<hr />
+<article class="row">
+  <div class="col-md-6 col-lg-3">
+    <h2 class="display-6 mb-3">New</h2>
+    <% for(let bug of latest){ %> <% let date = bug.reportedon%>
+    <div class="card mb-3">
+      <div class="card-body">
+        <a href="/admin/bug/<%=bug._id%>">
+          <h5 class="card-title"><%=bug.title%></h5>
+        </a>
+        <div class="text-muted">
+          on: <%=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()},
+          ${date.getHours()}:${date.getMinutes()+1}:${date.getSeconds()+1}`%>
+        </div>
+      </div>
+    </div>
+    <%}%>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <h2 class="display-6 mb-3">Assigned</h2>
+    <% for(let bug of assigned){ %> <% let date = bug.reportedon%>
+    <div class="card mb-3">
+      <div class="card-body">
+        <a href="/admin/bug/<%=bug._id%>">
+          <h5 class="card-title"><%=bug.title%></h5>
+        </a>
+        <div class="text-muted">
+          on: <%=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()},
+          ${date.getHours()}:${date.getMinutes()+1}:${date.getSeconds()+1}`%>
+        </div>
+      </div>
+    </div>
+    <%}%>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <h2 class="display-6 mb-3">Open</h2>
+    <% for(let bug of open){ %> <% let date = bug.reportedon%>
+    <div class="card mb-3">
+      <div class="card-body">
+        <a href="/admin/bug/<%=bug._id%>">
+          <h5 class="card-title"><%=bug.title%></h5>
+        </a>
+        <div class="text-muted">
+          on: <%=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()},
+          ${date.getHours()}:${date.getMinutes()+1}:${date.getSeconds()+1}`%>
+        </div>
+      </div>
+    </div>
+    <%}%>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <h2 class="display-6 mb-3">Fixed</h2>
+    <% for(let bug of fixed){ %> <% let date = bug.reportedon%>
+    <div class="card mb-3">
+      <div class="card-body">
+        <a href="/admin/bug/<%=bug._id%>">
+          <h5 class="card-title"><%=bug.title%></h5>
+        </a>
+        <div class="text-muted">
+          on: <%=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()},
+          ${date.getHours()}:${date.getMinutes()+1}:${date.getSeconds()+1}`%>
+        </div>
+      </div>
+    </div>
+    <%}%>
+  </div>
+</article>
+<hr />
+<a href="admin/team/new">create a new team</a>
